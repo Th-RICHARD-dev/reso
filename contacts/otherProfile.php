@@ -1,10 +1,6 @@
 <?php
 session_start();
-
-$connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
-if (!$connexion) {
-    die("Erreur de connexion: " . mysqli_connect_error());
-}
+require_once __DIR__ . '/../db.php';
 
 $profile_id = isset($_GET['user']) ? intval($_GET['user']) : 0;
 

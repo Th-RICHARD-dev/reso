@@ -1,6 +1,8 @@
 <?php
 session_start();
+require_once 'db.php';
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -15,7 +17,7 @@ session_start();
 
 <body>
     <div id="barreLateral">
-        <img src="./images/resoLogoWhite.png" alt="Reso" id="logo">
+        <img src="images/X.png?v=2" alt="reso" id="logo">
         <a href="index.php">Accueil</a>
         <?php if (!isset($_SESSION['users'])): ?>
             <a href="?pages=login">Login</a>
@@ -28,11 +30,6 @@ session_start();
     <main>
 
         <?php
-        $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
-        if (!$connexion) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['publication'])) {
                 $content = $_POST['content'];

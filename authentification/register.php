@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../db.php';
+?>
+
 <div class="global-content">
     <div class="register-container">
         <h2>Créer un compte</h2>
@@ -28,13 +32,8 @@
         </form>
     </div>
 </div>
-<?php
-$connection = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
- 
-if (!$connection) {
-    die("Connexion impossible : " . mysqli_connect_error());
-}
- 
+
+<?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = htmlspecialchars($_POST["lastName"]);
     $name = htmlspecialchars($_POST["name"]);
@@ -47,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
     if ($password === $confirm_password) {
         $query = "SELECT * FROM rs_users WHERE mail = '$mail'";
-        $result = mysqli_query($connection, $query);
+        $result = mysqli_query($connexion, $query);
  
         if (mysqli_num_rows($result) > 0) {
             echo "Cet email est déjà utilisé. Vous êtes peut-être déjà inscrit. <br>";
@@ -55,10 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $query = "INSERT INTO rs_users (mail, name, lastName, username, publicName, password, creationDate) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password', '$creationDate')";
  
-            if (mysqli_query($connection, $query)) {
+            if (mysqli_query($connexion, $query)) {
                 echo "Compte créé avec succès !";
             } else {
-                echo "Erreur lors de l'inscription : " . mysqli_error($connection);
+                echo "Erreur lors de l'inscription : " . mysqli_error($connexion);
             }
         }
     } else {
@@ -66,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
  
-mysqli_close($connection);
+mysqli_close($connexion);
 ?>
 
 

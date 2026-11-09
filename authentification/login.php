@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../db.php';
+?>
+
 <div class="global-content">
     <div class="login-container">
     <form class="login" method="POST" action="?pages=login">
@@ -12,12 +16,11 @@
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $connection = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
 
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    $request = mysqli_query($connection, "SELECT * FROM rs_users WHERE mail = '$email'");
+    $request = mysqli_query($connexion, "SELECT * FROM rs_users WHERE mail = '$email'");
     if (mysqli_num_rows($request) > 0) {
         $user = mysqli_fetch_assoc($request);
         if ($password === $user['password']) {
