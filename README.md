@@ -48,4 +48,4 @@ reso/
 
 ## 📄 Licence
 
-Ce projet est un projet personnel créer pas [Thomas Richard] (https://github.com/Th-RICHARD-dev). Tous droits réservés.
+Ce projet est un projet personnel créer pas [Thomas Richard](https://github.com/Th-RICHARD-dev). Tous droits réservés.
