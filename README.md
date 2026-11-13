@@ -1,4 +1,4 @@
-# Reso
+# Reso 🐦
 
 ## Présentation
 
